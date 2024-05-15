@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Home Page</title>
+</head>
+<body>
+  {% include "navbar.html" %}
+  <h1>Welcome to My Website!</h1>
+  <p>This is a simple home page.</p>
+  <p>You can add more content here, like links to other pages, images, or a short description of your website.</p>
+  <form action="/" method="post">
+    {% csrf_token %}
+    <p>If you want to show details click on check box and send button</p>
+    <input type="checkbox" name="check">
+    <button>Show Details</button>
+  </form>
+  {% if isActive %}
+  <div class="container" style="align-items: center;">
+    <h1>Current date and time is: {{date}}</h1>
+    <h2>Name of the Student is: {{name}}</h2>
+    <hr>
+    <h1>STUDENT DATA ACCESSING THROUGH OBJECT</h1>
+    <h3>Sudent Name : {{student_data.student_name}}</h3>
+    <h3>Sudent College : {{student_data.student_college}}</h3>
+    <h3>Sudent City : {{student_data.student_city}}</h3>
+    <hr>
+    <h2>Favourite Programs</h2>
+    {% for p in list_of_programs %}
+    <h5>{{p}}</h5>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</body>
+</html>
